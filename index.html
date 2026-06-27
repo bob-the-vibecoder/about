@@ -1,7 +1,123 @@
-<h1>Title</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/gaea-ai-design-system-8f501dee-45c2-4f4f-b3b8-726765fbfb1a/colors_and_type.css">
+<style>
+  html, body { background: #ffffff; }
+  .ax a { color: var(--ac); text-decoration: none; transition: opacity 160ms cubic-bezier(0.2,0.6,0.2,1); }
+  .ax a:hover { opacity: 0.55; }
+  .ax .ul { background-image: linear-gradient(var(--ac),var(--ac)); background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 1px; padding-bottom: 1px; }
+  .ax p { margin: 0; }
+</style>
+</helmet>
 
-<a href="about.html"> about </a>
+<div class="ax" data-screen-label="Afterimage" style="--ac:{{ accent }}; min-height:100vh; background:{{ bg }}; color:{{ fg }}; font-family:var(--font-sans); font-weight:300; display:grid; grid-template-columns:260px 1fr;">
 
-Text...
+  <!-- left rail -->
+  <div style="border-right:1px solid {{ rule }}; padding:56px 32px; display:flex; flex-direction:column; gap:48px; position:sticky; top:0; height:100vh; box-sizing:border-box;">
+    <div style="font-family:var(--font-mono); font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:{{ fg }};">Afterimage</div>
+    <div style="display:flex; flex-direction:column; gap:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:{{ fgMuted }};">
+      <a href="#manifesto">→ Manifesto</a><a href="#works">→ Works</a><a href="#about">→ About</a><a href="#visit">→ Visit</a>
+    </div>
+    <div style="margin-top:auto; font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:{{ fgGhost }}; line-height:2;">14 Mar<br>— 28 Jun<br>2026</div>
+  </div>
 
+  <!-- content column -->
+  <div>
+    <!-- hero -->
+    <div style="padding:96px 72px;">
+      <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:{{ accent }}; margin-bottom:40px;">Group Exhibition — Lindgren Hall</div>
+      <h1 style="font-size:{{ heroFont }}; line-height:0.98; font-weight:300; letter-spacing:-0.03em; margin:0; max-width:none; color:{{ fg }};">What the eye keeps after looking away.</h1>
+      <p style="font-size:18px; line-height:1.75; color:{{ fgMuted }}; max-width:52ch; margin-top:44px;">Six works on the residue of attention — the quiet interval between seeing and forgetting.</p>
+    </div>
 
+    <!-- image band -->
+    <figure style="margin:0; border-top:1px solid {{ rule }};">
+      <img src="uploads/image-trees.jpg" alt="Autumn pavilion under a weeping birch in fog" style="display:block; width:100%; height:460px; object-fit:cover;">
+      <figcaption style="display:flex; justify-content:space-between; padding:18px 72px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:{{ fgFaint }};">
+        <span><span style="color:{{ accent }};">05</span> &nbsp;Held Light — Yuki Mori</span><span>Photogram, 2025</span>
+      </figcaption>
+    </figure>
+
+    <!-- manifesto -->
+    <div id="manifesto" style="padding:72px; border-top:1px solid {{ rule }}; display:grid; grid-template-columns:150px 1fr; gap:36px;">
+      <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:{{ fgFaint }};">Manifesto</div>
+      <div>
+        <p style="font-size:24px; line-height:1.5; color:{{ fg }}; max-width:34ch;">An afterimage is what remains when the source is gone — the eye's insistence that something was there.</p>
+        <p style="font-size:16px; line-height:1.75; color:{{ fgMuted }}; max-width:56ch; margin-top:26px;">Across photography, painting and time-based media, nothing here is loud. Everything asks to be looked at twice.</p>
+      </div>
+    </div>
+
+    <!-- works -->
+    <div id="works" style="padding:72px; border-top:1px solid {{ rule }}; display:grid; grid-template-columns:150px 1fr; gap:36px;">
+      <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:{{ fgFaint }};">Works</div>
+      <div>
+        <sc-for list="{{ works }}" as="w" hint-placeholder-count="6">
+          <div style="display:flex; gap:22px; align-items:baseline; padding:20px 0; border-bottom:1px solid {{ rule }};">
+            <div style="font-family:var(--font-mono); font-size:12px; color:{{ accent }}; width:30px;">{{ w.no }}</div>
+            <div style="flex:1;">
+              <span style="font-size:20px; color:{{ fg }};">{{ w.title }}</span>
+              <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:{{ fgFaint }}; margin-left:14px;">{{ w.artist }}</span>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:{{ fgGhost }};">{{ w.year }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- about -->
+    <div id="about" style="padding:72px; border-top:1px solid {{ rule }}; display:grid; grid-template-columns:150px 1fr; gap:36px;">
+      <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:{{ fgFaint }};">About</div>
+      <div>
+        <p style="font-size:16px; line-height:1.8; color:{{ fgMuted }}; max-width:54ch;">Afterimage is curated by Hannah Reyes and presented across the ground-floor galleries of Lindgren Hall. The exhibition is free to enter and open to all.</p>
+      </div>
+    </div>
+
+    <!-- visit -->
+    <div id="visit" style="padding:72px; border-top:1px solid {{ rule }}; display:grid; grid-template-columns:150px 1fr; gap:36px;">
+      <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:{{ fgFaint }};">Visit</div>
+      <div>
+        <p style="font-size:16px; line-height:1.9; color:{{ fg }};">Lindgren Hall, 4 Carriage Row, London E2<br><span style="color:{{ fgMuted }};">Wed — Sun, 11:00 — 18:00 · Free entry</span><br><a class="ul" href="#">visit@lindgrenhall.org</a></p>
+      </div>
+    </div>
+
+    <div style="padding:32px 72px; border-top:1px solid {{ ruleStrong }}; display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:{{ fgFaint }};">
+      <span>Afterimage 2026</span><span>Lindgren Hall</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF3D00&quot;,&quot;options&quot;:[&quot;#FF5500&quot;,&quot;#FF6A00&quot;,&quot;#FF3D00&quot;,&quot;#FF7A1A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Light&quot;,&quot;options&quot;:[&quot;Light&quot;,&quot;Dark&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Style&quot;},&quot;titleScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.75,&quot;max&quot;:1.5,&quot;step&quot;:0.05,&quot;unit&quot;:&quot;×&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Style&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#FF5500';
+    const theme = this.props.theme ?? 'Light';
+    const scale = this.props.titleScale ?? 1;
+    const palette = theme === 'Dark'
+      ? { bg: '#0c0c0c', fg: '#f4f4f4', fgMuted: '#a8a8a8', fgFaint: '#787878', fgGhost: '#555555', rule: 'rgba(255,255,255,0.10)', ruleStrong: 'rgba(255,255,255,0.45)' }
+      : { bg: '#ffffff', fg: '#111111', fgMuted: '#555555', fgFaint: '#9a9a9a', fgGhost: '#bcbcbc', rule: '#ececec', ruleStrong: '#111111' };
+    return {
+      accent,
+      ...palette,
+      heroFont: Math.round(88 * scale) + 'px',
+      works: [
+        { no: '01', title: 'Long Exposure', artist: 'Mira Solveig', medium: 'silver gelatin print', year: '2025' },
+        { no: '02', title: 'Persistence', artist: 'Tomas Lindqvist', medium: 'oil on linen', year: '2024' },
+        { no: '03', title: 'Residue', artist: 'Aïcha Ndiaye', medium: 'cyanotype', year: '2025' },
+        { no: '04', title: 'Negative Space', artist: 'Johan Brandt', medium: 'graphite on paper', year: '2023' },
+        { no: '05', title: 'Held Light', artist: 'Yuki Mori', medium: 'photogram', year: '2025' },
+        { no: '06', title: 'The Last Glance', artist: 'Elena Vasquez', medium: 'single-channel video', year: '2026' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
